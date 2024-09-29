@@ -32,19 +32,19 @@ dependencies {
 group = 'com.quan.api'
 version = '1.0.0'
 
-afterEvaluate {
-  publishing {
-    publications {
-      maven(MavenPublication) {
-        artifactId = 'api-utils'
-        from components.java
-      }
-    }
-    repositories {
-      maven {
-        name = 'quan'
-        url = '../repo'
-      }
-    }
-  }
-}
+//afterEvaluate {
+//  publishing {
+//    publications {
+//      release(MavenPublication) {
+//        artifactId = 'api-utils'
+//        from components.java
+//      }
+//    }
+//    repositories {
+//      maven {
+//        name = 'quan'
+//        url = '../repo'
+//      }
+//    }
+//  }
+//}
