@@ -30,7 +30,7 @@ dependencies {
 }
 
 group = 'com.quan.api'
-version = '1.0.7'
+version = '1.0.8'
 
 //afterEvaluate {
 //  publishing {
