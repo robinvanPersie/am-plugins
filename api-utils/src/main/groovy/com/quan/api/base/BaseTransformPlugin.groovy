@@ -3,6 +3,8 @@ package com.quan.api.base
 import com.android.build.api.transform.*
 import com.android.build.gradle.AppExtension
 import com.android.build.gradle.AppPlugin
+import com.android.build.gradle.internal.pipeline.TransformManager
+import com.quan.api.utils.LogUtils
 import groovy.io.FileType
 import org.apache.commons.io.FileUtils
 import org.gradle.api.Plugin
@@ -25,8 +27,7 @@ abstract class BaseTransformPlugin<T> implements Plugin<Project>, BaseTransformC
             LogUtils.init(project)
             log('project(' + project.toString() + ') apply ' + getPluginName() + ' gradle plugin!')
             project.extensions.create(getPluginName(), getGenericClass())
-            def android = project.extensions.getByType(AppExtension)
-            android.registerTransform(new BaseTransform())
+            project.android.registerTransform(new BaseTransform())
         }
     }
 
@@ -43,12 +44,12 @@ abstract class BaseTransformPlugin<T> implements Plugin<Project>, BaseTransformC
 
         @Override
         Set<QualifiedContent.ContentType> getInputTypes() {
-            return setOf(QualifiedContent.DefaultContentType.CLASSES)
+            return TransformManager.CONTENT_CLASS
         }
 
         @Override
         Set<? super QualifiedContent.Scope> getScopes() {
-            return hashSetOf(
+            return Set.of(
                     QualifiedContent.Scope.PROJECT,
                     QualifiedContent.Scope.SUB_PROJECTS,
                     QualifiedContent.Scope.EXTERNAL_LIBRARIES

@@ -1,6 +1,6 @@
 plugins {
     id 'groovy'
-    id 'java-gradle-plugin'
+//    id 'java-gradle-plugin'
     id 'maven-publish'
 }
 
@@ -9,14 +9,14 @@ java {
     targetCompatibility = JavaVersion.VERSION_1_8
 }
 
-gradlePlugin {
-  plugins {
-    apiPlugin {
-      id = 'com.quan.api'
-      implementationClass = 'com.quan.api.ApiPlugin'
-    }
-  }
-}
+//gradlePlugin {
+//  plugins {
+//    apiPlugin {
+//      id = 'com.quan.api'
+//      implementationClass = 'com.quan.api.ApiPlugin'
+//    }
+//  }
+//}
 
 dependencies {
   implementation gradleApi()
@@ -30,7 +30,7 @@ dependencies {
 }
 
 group = 'com.quan.api'
-version = '1.0.0'
+version = '1.0.7'
 
 //afterEvaluate {
 //  publishing {
@@ -48,3 +48,18 @@ version = '1.0.0'
 //    }
 //  }
 //}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            artifactId='api'
+            from components.java
+
+        }
+    }
+    repositories {
+        maven {
+            url = "../repo"
+        }
+    }
+}

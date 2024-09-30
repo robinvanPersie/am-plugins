@@ -1,17 +1,21 @@
 pluginManagement {
     repositories {
+        maven { url "https://jitpack.io" }
         gradlePluginPortal()
         google()
         mavenCentral()
+        mavenLocal()
     }
 }
 buildscript {
     repositories {
+        maven { url "https://jitpack.io" }
         google()
         mavenCentral()
         mavenLocal()
     }
     dependencies {
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
     }
 }
 dependencyResolutionManagement {
